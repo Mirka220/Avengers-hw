@@ -1,0 +1,2 @@
+C:\Users\Home\source\repos\Avengers-hw\Avengers-hw\obj\Debug\Avengers-hw.csproj.AssemblyReference.cache
+C:\Users\Home\source\repos\Avengers-hw\Avengers-hw\obj\Debug\Avengers-hw.csproj.CoreCompileInputs.cache

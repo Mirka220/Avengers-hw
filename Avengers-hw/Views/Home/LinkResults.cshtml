@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Avengers_hw.Models.Avengers>
+
+<hr>
+@foreach (var Avengers in Model)
+{
+<div>
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <td>@Avengers.id</td>
+        </tr>
+        <tr>
+            <th>Имя</th>
+            <td>@Avengers.name</td>
+        </tr>
+        <tr>
+            <th>Фамилия</th>
+            <td>@Avengers.surname</td>
+        </tr>
+        <tr>
+            <th>Герой</th>
+            <td>@Avengers.hero< /td>
+        </tr>
+        <tr>
+            <th>Возраст</th>
+            <td>@Avengers.age< /td>
+        </tr>
+
+    </table>
+</div>}

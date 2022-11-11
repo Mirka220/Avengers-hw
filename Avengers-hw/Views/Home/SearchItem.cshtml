@@ -1,0 +1,44 @@
+﻿<div style="padding-top:100px">
+
+    @using (Ajax.BeginForm("SendAsJson", new AjaxOptions { UpdateTargetId = "showResults", LoadingElementId = "loading", LoadingElementDuration = 2000, Confirm = "Выполнить запрос ?", OnSuccess = "OnSuccess" }))
+
+    {
+<input type="text" name="fName" />
+                <input type="submit" value="Поиск" />}
+
+    <div id="loading" style="display:none">
+        <h3>Идет загрузка, Пожалуйста подождите ! </h3>
+    </div>
+
+    <div id="showResults">
+
+    </div>
+
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+
+    <script type="text/javascript">function OnBegin() {
+            alert("Ваш запрос принят, выполняется поиск");
+        }
+        function OnComplete(request, status) {
+            alert("Ваш запрос в обработке, под статусом :" + status);
+        }
+        function OnSuccess(data) {
+
+            var results = $('#showResults');
+            results.empty();
+            for (var i = 0; i < data.length; i++) {
+                results.append('<li>' + data[i].Hero + '</li>');
+            }
+            alert("Ваш запрос успешно завершен, получены следующие данные:" + data);
+        }
+        function OnFailure(request, error) {
+            $("#showResults").html("Данного героя нет в нашем списке." + error)
+        }</script>
+}
+
+

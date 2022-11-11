@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Avengers_hw.Models.Avengers>
+
+<div id="showResults">
+    <h4> Список Героев </h4>
+
+    @foreach (var Avengers in Model)
+    {
+<ul>
+    <li>@Avengers.id</li>
+    <li>@Avengers.name</li>
+    <li>@Avengers.surname</li>
+    <li>@Avengers.hero</li>
+    <li>@Avengers.age</li>
+</ul>}
+
+</div>
