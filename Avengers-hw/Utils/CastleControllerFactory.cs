@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.Windsor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,15 +19,6 @@ namespace Avengers_hw.Utils
             }
             this.Container = container;
         }
-
-        /* protected override IController GetControllerInstance(Type controllerType, RequestContext requestContext)
-         {
-
-             return Container.Resolve(controllerType) as IController;
-         }
- */
-
-
         public override void ReleaseController(IController controller)
         {
             var disposableController = controller as IDisposable;
@@ -34,7 +26,6 @@ namespace Avengers_hw.Utils
             {
                 disposableController.Dispose();
             }
-            /*base.ReleaseController(controller);*/
             Container.Release(controller);
         }
     }

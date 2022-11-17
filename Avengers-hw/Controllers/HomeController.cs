@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Avengers_hw.Filters;
 
 namespace Avengers_hw.Controllers
 {
@@ -16,12 +17,17 @@ namespace Avengers_hw.Controllers
         {
             repo = r;
         }
-        public HomeController() : this(new HomeRepository())
-        {
 
+        [ActionFilter]
+        [ExceptionFilter]
+        [ActionName("MainPage")]
+        public ActionResult Index()
+        {
+            return View();
         }
 
-        public ActionResult Index()
+        [ExceptionFilter]
+        public ActionResult One()
         {
             return View();
         }
@@ -32,6 +38,7 @@ namespace Avengers_hw.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin", Users = "Kanaffin, Aidar")]
         public ActionResult SeacrhItem()
         {
             repo.SeacrhItem();
@@ -44,6 +51,12 @@ namespace Avengers_hw.Controllers
             var searching = repo.Results(fName);
 
             return PartialView(searching);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
         }
 
         public ActionResult LinkResults()
@@ -66,11 +79,6 @@ namespace Avengers_hw.Controllers
         public ActionResult GetTable()
         {
             return View(repo.GetTable());
-        }
-
-        public ActionResult Sample()
-        {
-            return View();
         }
 
         public ActionResult About()
@@ -100,6 +108,16 @@ namespace Avengers_hw.Controllers
             return "<p> Browser: " + browser + "<br> IP:" + ip + "Cookie:" + cookies + "</p>";
         }
 
+        [ActionName("Time")]
+        public string VyvodVremeni()
+        {
+            return TimeStamp();
+        }
 
+        [NonAction]
+        public string TimeStamp()
+        {
+            return "Время :" + DateTime.Now.ToString();
+        }
     }
 }
