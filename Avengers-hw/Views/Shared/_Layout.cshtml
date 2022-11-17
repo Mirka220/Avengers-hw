@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Поиск", "SearchAvengers", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -37,7 +38,8 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap.bundle")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

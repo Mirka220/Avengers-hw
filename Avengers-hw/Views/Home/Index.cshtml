@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Avengers_hw.Models.Avengers>
+@using Avengers_hw.Helpers
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -7,6 +9,39 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+
+<h1>@Session["Name"]</h1>
+
+<div>
+    <input type="text" id="text" />
+    <input type="button" id="submit" value="Поиск" />
+    <div id="result">
+    </div>
+</div>
+
+
+@helper ListofAvengers(string[] allAvengers)
+{
+    <ul>
+        @foreach (string avenger in allAvengers)
+        {
+            <li>
+                @avenger
+            </li>
+}
+    </ul>
+}
+
+@{ string[] hero = new string[] { "Iron man","Hulk","Captain America"}; }
+
+
+<h3> Html helper List of Avengers</h3>
+
+@ListofCustomers(hero)
+
+<h3> Html helper using C# List of Avengers</h3>
+
+@ListHelper.List(Html, hero)
 
 <div class="row">
     <div class="col-md-4">
@@ -32,7 +67,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap.bundle")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     <script type="text/javascript">
     $(document).ready(function(){
